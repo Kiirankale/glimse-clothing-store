@@ -1,11 +1,17 @@
 
+import { Outlet } from "react-router-dom"
+import Navbar from "./Components/Navbar"
+
+
 
 function App() {
   
 
   return (
     <>
-      <div className='bg-red-500'>hello</div>
+     <Navbar/>
+     <Outlet/>
+     
     </>
   )
 }
