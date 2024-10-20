@@ -96,6 +96,22 @@ nav {
     padding: 5rem 0rem;
 }
 
+.section__header {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.section__subheader {
+    max-width: 500px;
+    margin: auto;
+    color: var(--text-light);
+    text-align: center;
+}
+
 .header__container {
     min-height: 650px;
     background-color: var(--primary-color-light);
@@ -183,6 +199,7 @@ nav {
 .categories__card {
     text-align: center;
 }
+
 .categories__card img {
     max-width: 100px;
     margin: auto;
@@ -190,13 +207,82 @@ nav {
     border: 5px solid var(--white);
     border-radius: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  .categories__card h4 {
+}
+
+.categories__card h4 {
     font-size: 1.2rem;
     font-weight: 600;
     font-family: var(--header-font);
     color: var(--text-dark);
+}
+
+.hero__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.hero__card {
+    position: relative;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15%, -50%);
+}
+
+.hero__content p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.hero__content h4 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+}
+
+.hero__content a {
+    color: var(--text-dark);
+    text-decoration: underline;
+}
+
+.hero__card img {
+    border-radius: 5px;
+}
+
+.product__card__content {
+    text-align: center;
+    padding: 1rem;
+}
+
+.product__card__content h4 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-family: var(--header-font);
+}
+
+.product__card__content p {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.product__card__content p s {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+.product__btn {
+    text-align: center;
   }
+
 
 
 @media (width < 900px) {
@@ -224,6 +310,17 @@ nav {
     .hero__container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .hero__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 100px;
+    }
+
 
 
 }

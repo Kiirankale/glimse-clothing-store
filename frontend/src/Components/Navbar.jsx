@@ -33,7 +33,7 @@ function Navbar() {
                     </span>
                     <span>
                         <Link to={"/user"}>
-                            <i class="ri-user-smile-line"></i>
+                            <i className="ri-user-smile-line"></i>
                         </Link>
                     </span>
 
