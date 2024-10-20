@@ -3,6 +3,7 @@ import Banner from './Banner'
 import Categories from './Categories'
 import HeroSection from './HeroSection'
 import { TrendingProduct } from '../Shop/TrendingProduct'
+import { DealsSection } from './DealsSection'
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
     <Categories/>
     <HeroSection/>
     <TrendingProduct/>
+    <DealsSection/>
     </>
   )
 }
