@@ -360,6 +360,36 @@ nav {
     color: var(--text-dark);
 }
 
+.banner__container {
+    max-width: var(--max-width-900);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.banner__card {
+    text-align: center;
+}
+
+.banner__card span {
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.banner__card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+}
+
+.banner__card p {
+    color: var(--text-light);
+}
+
 
 
 @media (width < 900px) {

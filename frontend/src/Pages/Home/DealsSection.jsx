@@ -4,7 +4,8 @@ import dealsPng from "../../assets/deals.png"
 export const DealsSection = () => {
   return (
     <section className='section__container deals__container'>
-        <div><img src={dealsPng} alt="deals png" /></div>
+        <div
+        className='deals__image'><img src={dealsPng} alt="deals png" /></div>
         <div className='deals__content'>
             <h5> Get upto 20% discont on latest deals</h5>
             <h4>Deals Of This Month</h4>
