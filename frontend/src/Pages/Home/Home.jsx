@@ -5,6 +5,7 @@ import HeroSection from './HeroSection'
 import { TrendingProduct } from '../Shop/TrendingProduct'
 import { DealsSection } from './DealsSection'
 import { PromoBanner } from './PromoBanner'
+import { Blogs } from '../Blogs/Blogs'
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
     <TrendingProduct/>
     <DealsSection/>
     <PromoBanner/>
+    <Blogs/>
     </>
   )
 }

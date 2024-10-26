@@ -186,6 +186,7 @@ nav {
     overflow: hidden;
     border-bottom-right-radius: 1rem;
 
+
 }
 
 .product__grid {
@@ -387,6 +388,42 @@ nav {
 }
 
 .banner__card p {
+    color: var(--text-light);
+}
+
+.blog__container {
+    background-color: var(--extra-light);
+    border-radius: 1rem;
+}
+
+.blog__card {
+    background-color: var(--white);
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog__card__content {
+    padding: 1rem;
+    text-align: center;
+}
+
+.blog__card__content h6 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.blog__card__content h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+}
+
+.blog__card__content p {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-light);
 }
 
