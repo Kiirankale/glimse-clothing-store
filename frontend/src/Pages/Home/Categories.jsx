@@ -30,6 +30,7 @@ function Categories() {
   return (
     <>
       <div className="product__grid ">
+       
         {
           categories.map((category)=>(
            <Link to={`/categories/${category.path}`} key={category.name} className='categories__card'>
@@ -40,6 +41,9 @@ function Categories() {
           ))
 
         }
+
+       
+       
 
       </div>
     </>
