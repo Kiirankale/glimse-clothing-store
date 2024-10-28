@@ -59,13 +59,13 @@ export const Footer = () => {
             <div className='footer__bar'>
                 <h3 className='uppercase'>Glimse Clothing Store</h3>
                 <p>All your styles are here.</p>
-                
-                    <p>Developed by <a href="#">Kiran</a>
-                    </p>
-                    <p className='mb-2'>copyright ©2024 <a href="#">Glimse.</a>
-                    </p>
 
-                
+                <p>Developed by <a href="#">Kiran</a>
+                </p>
+                <p className='mb-2'>copyright ©2024 <a href="#">Glimse.</a>
+                </p>
+
+
 
             </div>
         </>

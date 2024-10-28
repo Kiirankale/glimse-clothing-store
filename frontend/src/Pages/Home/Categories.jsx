@@ -10,11 +10,11 @@ import { Link } from 'react-router-dom'
 function Categories() {
   const categories = [{
     name: "Accesories",
-    path: "accesories",
+    path: "accessories",
     image: cat1
   }, {
     name: "Dress collection",
-    path: "dress-collection",
+    path: "dress",
     image: cat2
   },
     , {
