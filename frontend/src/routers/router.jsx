@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import Home from "../Pages/Home/Home";
 import { CategoryPage } from "../Pages/Category/CategoryPage";
 import { Search } from "../Pages/search/Search";
+import { ShopPage } from "../Pages/Shop/ShopPage";
 
 const router = createBrowserRouter([
     {
@@ -12,7 +13,9 @@ const router = createBrowserRouter([
         children: [
             { path: "/",   element: <Home/>},
             {path:"/categories/:categoryName" ,element: <CategoryPage/>},
-            {path:"/search" ,element: <Search/>}
+            {path:"/search" ,element: <Search/>},
+            {path:"/shop",element:<ShopPage/>}
+
             
         ]
     },
