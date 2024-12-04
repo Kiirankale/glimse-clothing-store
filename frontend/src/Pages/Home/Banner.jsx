@@ -5,7 +5,7 @@ import bannerImg from '../../assets/header.png';
 
 function Banner() {
   return (
-    <div className='section__container header__container'>
+    <div className='section__container header__container '>
       <div className='header__content z-30'>
         <h4 className='uppercase'>up to 20% discount on</h4>
         <h1>Women's Fashion</h1>

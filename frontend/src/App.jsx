@@ -6,14 +6,17 @@ import { Footer } from "./Components/Footer"
 
 
 function App() {
-  
+
 
   return (
     <>
-     <Navbar/>
-     <Outlet/>
-     <Footer/>
-     
+
+      <Navbar />
+
+
+      <Outlet />
+      <Footer />
+
     </>
   )
 }
