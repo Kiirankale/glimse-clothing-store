@@ -1,10 +1,19 @@
 import React from "react";
 import { OrderSummary } from "./OrderSummary";
+import { removeFromCart, updateQuantity } from "../../../redux/Features/cartSlice";
+import { useDispatch } from "react-redux";
 
 export const CartModal = ({ products, isCartOpen, onClose }) => {
-  const handleRemove =()=>{
-    
-    
+  const dispatch = useDispatch();
+  const handleQuantity = (type, id) => {
+    const payload = { type, id }
+    dispatch(updateQuantity(payload))
+  }
+  const handleRemove = (e,id) => {
+    e.preventDefault()
+    dispatch(removeFromCart({id}))
+
+
   }
   return (
     <div
@@ -38,14 +47,25 @@ export const CartModal = ({ products, isCartOpen, onClose }) => {
                     </div>
                   </div>
                   <div className="flex flex-row  md:justify-start justify-end items-center mt-2">
-                    <button className="size-6 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-primary hover:text-white ml-8">+</button>
+
+                    <button onClick={() => {
+                      handleQuantity("decrement", item.id)
+                    }} className="size-6 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-primary hover:text-white ">-</button>
                     <span className="px-2 text-center mx-1
               ">{item.quantity}</span>
-                    <button className="size-6 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-primary hover:text-white ">-</button>
+                    <button onClick={() => {
+                      handleQuantity("increment", item.id)
+                    }} className="size-6 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-primary hover:text-white ">+</button>
+
+
                     <div className="ml-5">
                       <button className="text-red-500 hover:text-red-800">
-                        <span onClick={handleRemove} className="block md:hidden text-3xl">×</span>
-                        <span onClick={handleRemove} className="hidden md:block">Remove</span>
+                        <span onClick={(e)=>{
+                             handleRemove(e,item.id)
+                        }} className="block md:hidden text-3xl">×</span>
+                        <span onClick={(e)=>{
+                             handleRemove(e,item.id)
+                        }} className="hidden md:block">Remove</span>
                       </button>
                     </div>
                   </div>
@@ -59,8 +79,8 @@ export const CartModal = ({ products, isCartOpen, onClose }) => {
         </div>
         <OrderSummary />
       </div>
-      
+
     </div>
-     
+
   );
 };
