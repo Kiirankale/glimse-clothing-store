@@ -20,17 +20,32 @@ router.post('/register', async (req, res) => {
   }
 })
 
-// login endpoint
-router.post('/login', async () => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(404).send({ message: "User not found" })
+// login user endpoint
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).send({ message: "Email and password are required." });
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).send({ message: "User not found" })
+    }
+    const isMatch = await user.comparePassword(password)
+    if (!isMatch) {
+      return res.status(401).send({ message: "Password not match" })
+    }
+    res.status(200).send({ message: "User logged in succesfully.", user })
+    
+    
+
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).send({ message: "Internal server error." });
+
+
   }
-  const isMatch = await user.comparePassword(password)
-  if (!isMatch) {
-    return res.status(401).send({ message: "Password not match" })
-  }
+
 })
 
 
