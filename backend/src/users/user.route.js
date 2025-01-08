@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const User = require('./user.module')
+const User = require('./user.module');
+const generateToken = require('../middleware/generateToken');
+
 
 // register endpoint
 router.post('/register', async (req, res) => {
@@ -35,7 +37,22 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       return res.status(401).send({ message: "Password not match" })
     }
-    res.status(200).send({ message: "User logged in succesfully.", user })
+   
+    const token =  generateToken(user._id);
+    res.cookie("token",token,{
+      httpOnly:true,
+      secure:true,
+      sameSite:'None',
+
+    })
+    res.status(200).send({ message: "User logged in succesfully.",token, user:{
+      _id :user._id,
+      email:user.email,
+      role:user.role,
+      profileImg:user.profileImg,
+      bio:user.bio,
+      profession:user.profession
+    } })
     
     
 
@@ -45,6 +62,13 @@ router.post('/login', async (req, res) => {
 
 
   }
+
+})
+
+// all users endpoint
+
+router.get('/users', async(req,res)=>{
+  res.send({message: " protected users "})
 
 })
 
