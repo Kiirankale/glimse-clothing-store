@@ -41,7 +41,7 @@ function Navbar() {
                         </button>
                     </span>
                     <span>
-                        <Link to={"/login"}>
+                        <Link to={"/user"}>
                             <i className="ri-user-smile-line"></i>
                         </Link>
                     </span>
