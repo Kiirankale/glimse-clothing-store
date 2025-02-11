@@ -28,11 +28,10 @@ const authApi = createApi(
             }),
             logoutUser: builder.mutation({
                 query: () => ({
-                    url: "/logout",
-                    method: "POST",
-
-                })
-
+                    url: '/logout',
+                    method: 'POST',
+                    credentials: 'include',  
+                }),
             }),
             getUser: builder.query({
                 query: () => ({
