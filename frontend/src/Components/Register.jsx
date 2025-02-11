@@ -3,26 +3,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRegisterUserMutation } from '../redux/Features/auth/authApi';
 
 export const Register = () => {
-    const [message, setMessage ] = useState('');
-    const [username, setUserName ] = useState('');
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] =useState('');
+    const [message, setMessage] = useState('');
+    const [username, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
 
-    const [registerUser,{isLoading}]=useRegisterUserMutation()
-   
-    const handleRegister =async(e)=>{
+    const [registerUser, { isLoading }] = useRegisterUserMutation()
+
+    const handleRegister = async (e) => {
         e.preventDefault()
-        const data ={username,email,password}
+        const data = { username, email, password }
         try {
             await registerUser(data).unwrap();
             alert("Registration successfull.")
             navigate('/login')
         } catch (error) {
             setMessage("Registration failed .")
-            console.log('registration error ',error);
-            
-            
+            console.log('registration error ', error);
+
+
         }
 
     }
@@ -32,17 +33,21 @@ export const Register = () => {
                 <h1 className='text-2xl pt-5 font-semibold '>Please Register</h1>
                 <form onSubmit={handleRegister} className='max-w-sm mx-auto pt-8 space-y-5'>
 
-                    <input onChange={(e)=>{
+                    <input onChange={(e) => {
                         setUserName(e.target.value)
                     }} className='bg-gray-200 w-full focus:outline-none px-5 py-3 ' type="text" name="username" id="username" placeholder='Username' required />
 
-                    <input onChange={(e)=>{
+                    <input onChange={(e) => {
                         setEmail(e.target.value)
                     }} className='bg-gray-200 w-full focus:outline-none px-5 py-3 ' type="email" name="email" id="email" placeholder='Email' required />
+                    <div className='relative'>
+                        <input onChange={(e) => {
+                            setPassword(e.target.value)
+                        }} className='bg-gray-200 w-full focus:outline-none px-5 py-3' type={`${showPassword ? "text" : "password"}`} placeholder='Password' required />
+                        <i onClick={() => setShowPassword(!showPassword)} className={`ri-${showPassword ? "eye-line" : "eye-off-line"} absolute top-3 right-3`}></i>
 
-                    <input onChange={(e)=>{
-                     setPassword(e.target.value)
-                    }} className='bg-gray-200 w-full focus:outline-none px-5 py-3' type="password" placeholder='Password' required />
+                    </div>
+
 
                     {message && <p className='text-red-500'>{message}</p>}
 

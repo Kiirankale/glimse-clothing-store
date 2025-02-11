@@ -4,10 +4,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useLoginUserMutation } from '../redux/Features/auth/authApi';
 import { setUser } from '../redux/Features/auth/authSlice';
 
+
 export const Login = () => {
     const [message, setMessage ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [showPassword, setShowPassword] =useState(false)
+    
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const [loginUser,{isLoading:loginLoading}]=useLoginUserMutation()
@@ -40,10 +43,21 @@ export const Login = () => {
                     <input onChange={(e)=>{
                         setEmail(e.target.value)
                     }} className='bg-gray-200 w-full focus:outline-none px-5 py-3 ' type="email" name="email" id="email" placeholder='Email' required />
-
-                    <input onChange={(e)=>{
-                     setPassword(e.target.value)
-                    }} className='bg-gray-200 w-full focus:outline-none px-5 py-3' type="password" placeholder='Password' required />
+                     
+                     <div className="relative">
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              className="bg-gray-200 w-full focus:outline-none px-5 py-3 pr-10" 
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              required
+            />
+            <i
+              onClick={() => setShowPassword(!showPassword)}
+              className={`ri-${showPassword ? "eye-off-line" : "eye-line"} absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-gray-600`}
+            ></i>
+          </div>
+                    
 
                     {message && <p className='text-red-500'>{message}</p>}
 
