@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 // Register endpoint
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password ,} = req.body;
 
     if (!username || !email || !password) {
       return res.status(400).send({ message: 'Username, email, and password are required' });
@@ -65,6 +65,18 @@ router.post('/login', async (req, res) => {
     console.error('Login error:', error.message);
     res.status(500).send({ message: 'Internal server error' });
   }
+});
+
+//logout user
+// Logout endpoint
+router.post('/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'None',
+  });
+  
+  res.status(200).send({ message: 'User logged out successfully' });
 });
 
 // Delete user endpoint
