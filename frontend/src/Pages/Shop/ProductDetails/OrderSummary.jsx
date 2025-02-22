@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCart } from '../../../redux/Features/cartSlice';
+import { clearCart } from '../../../redux/Features/cart/cartSlice';
 
 export const OrderSummary = () => {
     const dispatch = useDispatch();
