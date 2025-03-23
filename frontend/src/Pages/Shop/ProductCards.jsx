@@ -9,6 +9,8 @@ export const ProductCards = ({ products }) => {
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
     }
+    
+
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
@@ -16,7 +18,7 @@ export const ProductCards = ({ products }) => {
                 products.map((product, index) => (
                     <div key={index} className='product__card'>
                         <div className='relative'>
-                            <Link to={`/shop/${product.id}`}>
+                            <Link to={`/shop/${product._id}`}>
                                 <img src={product.image} alt="product image" className='max-h-96 md:h-64 w-full object-cover  hover:scale-110 transition-transform duration-300' />
                             </Link>
                             <button onClick={(e) => {

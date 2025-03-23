@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import productionData from '../../Data/products.json'
-import { ProductCards } from '../Shop/ProductCards'
-import { ShopFiltering } from './ShopFiltering';
+import  {ProductCards } from '../Shop/ProductCards'
+import  ShopFiltering  from './ShopFiltering';
 import { useFetchAllProductsQuery } from '../../redux/Features/products/productsApi';
 const filters = {
+
 
     categories: ['all', 'accessories', 'dress', 'jewellery', 'cosmetics'],
     colors: ['all', 'black', 'blue', 'red', 'gold', 'pink', 'silver', 'green'],
@@ -11,6 +12,7 @@ const filters = {
     { label: '₹100-₹200', min: 100, max: 200 },
     { label: '₹200 and above', min: 200, max: Infinity }
     ]
+
 
 };
 
@@ -27,9 +29,22 @@ export const ShopPage = () => {
     });
     const [currentPage, setCurrentPage] = useState(1)
     const [productPerPage] = useState(8)
+
     const { category, color, priceRange } = filterState;
     const [minPrice, maxPrice] = priceRange.split('-').map(Number);
     const { data: { products = [], totalPages, totalProducts } = {}, error, isLoading } = useFetchAllProductsQuery({ category: category !== 'all' ? category : '', color: color !== 'all' ? color : '', minPrice: isNaN(minPrice) ? "" : minPrice, maxPrice: isNaN(maxPrice) ? "" : maxPrice, page: currentPage, limit: productPerPage })
+
+
+
+
+
+
+
+
+
+
+
+
 
     // handle paginating
     const handlePageChange = (pageNumber) => {
@@ -37,6 +52,7 @@ export const ShopPage = () => {
             setCurrentPage(pageNumber)
 
         }
+
 
     }
 
@@ -51,6 +67,7 @@ export const ShopPage = () => {
             }
         )
     }
+
 
     if (isLoading) return <div>
         Loading...
