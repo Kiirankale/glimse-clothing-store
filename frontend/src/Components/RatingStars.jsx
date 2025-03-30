@@ -18,3 +18,5 @@ export const RatingStars = ({rating}) => {
     <div>{stars}</div>
   )
 }
+
+
