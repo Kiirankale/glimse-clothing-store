@@ -55,7 +55,7 @@ router.get("/", async (req,res) => {
         const skip = (parseInt(page)-1) *parseInt(limit);
         const totalProducts = await Products.countDocuments(filter);
         const totalPages = Math.ceil(totalProducts/parseInt(limit));
-        const products = await Products.find(filter).skip(skip).limit(parseInt(limit)).populate("author","email").sort({createdAT:-1});
+        const products = await Products.find(filter).skip(skip).limit(parseInt(limit)).populate("author","email").sort({createdAt:-1});
 
         res.status(200).send({products,totalPages,totalProducts})
 
@@ -72,6 +72,7 @@ router.get("/", async (req,res) => {
 router.get("/:id", async (req, res) => {
     try {
       const productId = req.params.id;
+
       const product = await Products.findById(productId).populate(
         "author",
         "email username"
