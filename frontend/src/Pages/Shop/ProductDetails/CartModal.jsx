@@ -5,16 +5,17 @@ import { useDispatch } from "react-redux";
 
 export const CartModal = ({ products, isCartOpen, onClose }) => {
   const dispatch = useDispatch();
-  const handleQuantity = (type, id) => {
-    const payload = { type, id }
+  const handleQuantity = (type, _id) => {
+    const payload = { type, _id } 
     dispatch(updateQuantity(payload))
   }
-  const handleRemove = (e,id) => {
+  const handleRemove = (e,_id) => {
     e.preventDefault()
-    dispatch(removeFromCart({id}))
+    dispatch(removeFromCart({_id}))
 
 
   }
+  
   return (
     <div
       className={`fixed z-[1000] inset-0 bg-black bg-opacity-80 transition-opacity ${isCartOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -35,6 +36,11 @@ export const CartModal = ({ products, isCartOpen, onClose }) => {
           <div>
             {products.length === 0 ? (<div>Your cart is empty</div>) : (
               products.map((item, index) => (
+                
+                
+                
+                 
+              
                 <div key={index} className="flex flex-row md:flex-row md:items-center md:justify-between shadow-md md:p-5 mb-4 p-2 ">
                   <div className="flex items-center">
                     <span className="mr-4 px-1 bg-primary text-white rounded-full">0{index + 1}</span>
@@ -49,22 +55,22 @@ export const CartModal = ({ products, isCartOpen, onClose }) => {
                   <div className="flex flex-row  md:justify-start justify-end items-center mt-2">
 
                     <button onClick={() => {
-                      handleQuantity("decrement", item.id)
+                      handleQuantity("decrement", item._id)
                     }} className="size-6 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-primary hover:text-white ">-</button>
                     <span className="px-2 text-center mx-1
               ">{item.quantity}</span>
                     <button onClick={() => {
-                      handleQuantity("increment", item.id)
+                      handleQuantity("increment", item._id)
                     }} className="size-6 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-primary hover:text-white ">+</button>
 
 
                     <div className="ml-5">
                       <button className="text-red-500 hover:text-red-800">
                         <span onClick={(e)=>{
-                             handleRemove(e,item.id)
+                             handleRemove(e,item._id)
                         }} className="block md:hidden text-3xl">×</span>
                         <span onClick={(e)=>{
-                             handleRemove(e,item.id)
+                             handleRemove(e,item._id)
                         }} className="hidden md:block">Remove</span>
                       </button>
                     </div>
