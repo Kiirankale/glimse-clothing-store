@@ -7,15 +7,15 @@ const bcrypt = require('bcrypt');
 // Register endpoint
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password ,} = req.body;
+    const { username, email, password, } = req.body;
 
     if (!username || !email || !password) {
       return res.status(400).send({ message: 'Username, email, and password are required' });
     }
 
-    
+
     const user = new User({ email, username, password });
-    await user.save(); 
+    await user.save();
 
     res.status(201).send({ message: 'User registered successfully' });
   } catch (error) {
@@ -38,16 +38,16 @@ router.post('/login', async (req, res) => {
     if (!user) {
       return res.status(404).send({ message: 'User not found' });
     }
-   
+
 
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).send({ message: 'Incorrect password' });
     }
-   
-    
 
-    
+
+
+
 
     const token = generateToken(user._id);
     res.cookie('token', token, {
@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
     res.status(200).send({
       message: 'User logged in successfully.',
       token,
-      user: { _id: user._id, username: user.username, profileImg: user.profileImg },
+      user: { _id: user._id, username: user.username, profileImg: user.profileImg, email: user.email, role: user.role },
     });
   } catch (error) {
     console.error('Login error:', error.message);
@@ -75,7 +75,7 @@ router.post('/logout', (req, res) => {
     secure: true,
     sameSite: 'None',
   });
-  
+
   res.status(200).send({ message: 'User logged out successfully' });
 });
 
