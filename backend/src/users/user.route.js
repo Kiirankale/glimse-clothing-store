@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
     res.status(200).send({
       message: 'User logged in successfully.',
       token,
-      user: { _id: user._id, username: user.username, profileImg: user.profileImg, email: user.email, role: user.role },
+      user: { _id: user._id, username: user.username, profileImg: user.profileImage, email: user.email, role: user.role },
     });
   } catch (error) {
     console.error('Login error:', error.message);
@@ -129,30 +129,40 @@ router.put('/users/:id', async (req, res) => {
   }
 });
 
-// Edit profile endpoint
-router.patch('/edit-profile', async (req, res) => {
+// edit or update profile
+router.patch("/edit-profile", async (req, res) => {
   try {
-    const { userId, username, profileImg, bio, profession } = req.body;
-
+    const { userId, username, profileImage, bio, profession } = req.body;
     if (!userId) {
-      return res.status(400).send({ message: 'User ID is required' });
+      return res.status(400).send({ message: "User ID is required" });
     }
-
     const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).send({ message: 'User not found' });
-    }
 
-    if (username) user.username = username;
-    if (profileImg) user.profileImg = profileImg;
-    if (bio) user.bio = bio;
-    if (profession) user.profession = profession;
+    if (!user) {
+      return res.status(400).send({ message: "User not found" });
+    }
+    // update profile
+    if (username !== undefined) user.username = username;
+    if (profileImage !== undefined) user.profileImage = profileImage;
+    if (bio !== undefined) user.bio = bio;
+    if (profession !== undefined) user.profession = profession;
 
     await user.save();
-    res.status(200).send({ message: 'User profile updated successfully', user });
+    res.status(200).send({
+      message: "Profile updated successfully",
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        profileImage: user.profileImage,
+        bio: user.bio,
+        profession: user.profession,
+        role: user.role,
+      },
+    });
   } catch (error) {
-    console.error('Error updating profile:', error.message);
-    res.status(500).send({ message: 'Error updating profile' });
+    console.error("Error updating user profile", error);
+    res.status(500).send({ message: "Error updating user profile" });
   }
 });
 

@@ -113,16 +113,15 @@ router.get('/order/:id', async (req, res) => {
     try {
         const order = await Order.findById(req.params.id);
         if (!order) {
-            return res.status(400).send(order)
-
+            return res.status(404).send({ message: "Order not found" });
         }
 
+        res.status(200).send({ order }); 
     } catch (error) {
-        console.error('Error fetching orders by user id', error)
-        res.status(500).send({ message: "Failed to fetch orders by user id " })
-
+        console.error('Error fetching orders by user id', error);
+        res.status(500).send({ message: "Failed to fetch orders by user id" });
     }
-})
+});
 
 // get all orders
 
