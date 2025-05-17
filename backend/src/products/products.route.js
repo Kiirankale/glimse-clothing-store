@@ -8,6 +8,8 @@ const router = express.Router();
 // Post a product
 router.post("/create-product", async (req, res) => {
     try {
+
+        console.log("Request body:", req.body);
         const newProduct = new Products({ ...req.body });
         const saveProduct = await newProduct.save();
 
@@ -91,54 +93,49 @@ router.get("/:id", async (req, res) => {
     }
   });
 
-// Update a product
-router.patch("/update-product/:id",verifyToken,verifyAdmin, async(req,res)=>{
-    try {
-        console.log("api hit");
-        
-        const productId = req.params.id;
-        
-        const updatedProduct = await Products.findByIdAndUpdate(productId,{...req.body},{new:true})
+router.patch("/update-product/:id", verifyToken, verifyAdmin, async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const updatedProduct = await Products.findByIdAndUpdate(
+      productId,
+      { ...req.body },
+      { new: true }
+    );
 
-       if(!updatedProduct){
-        return res.status(404).send({message:"Product not found"})
-
-       }
-       res.status(200).send({
-        message:"Product updated succesfully",
-        product:updatedProduct
-       })
-
-        
-    } catch (error) {
-        console.log("Error updating the product",error);
-        res.status(500).send({message:"failed to update the product"})
-        
-        
+    if (!updatedProduct) {
+      return res.status(404).send({ message: "Product not found" });
     }
-})
 
-// Delete a product
-router.delete('/delete-product/:id', async (req, res) => {
-    try {
-        const productId = req.params.id;
-        
-        
-        const deletedProduct = await Products.findByIdAndDelete(productId);
+    res.status(200).send({
+      message: "Product updated successfully",
+      product: updatedProduct,
+    });
+  } catch (error) {
+    console.error("Error updating the product", error);
+    res.status(500).send({ message: "Failed to update the product" });
+  }
+});
 
-        if (!deletedProduct) {
-            return res.status(404).send({ message: "Product not found" });
-        }
+router.delete("/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    console.log(productId)
+    const deletedProduct = await Products.findByIdAndDelete(productId);
 
-        
-        await Reviews.deleteMany({ productId: productId });
-
-        res.status(200).send({ message: "Product deleted successfully" });
-
-    } catch (error) {
-        console.error("Error deleting the product", error);
-        res.status(500).send({ message: "Failed to delete the product." });
+    if (!deletedProduct) {
+      return res.status(404).send({ message: "Product not found" });
     }
+
+    // delete reviews related to the product
+    await Reviews.deleteMany({ productId: productId });
+
+    res.status(200).send({
+      message: "Product deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting the product", error);
+    res.status(500).send({ message: "Failed to delete the product" });
+  }
 });
 
 // get related product
