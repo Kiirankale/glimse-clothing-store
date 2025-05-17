@@ -11,8 +11,7 @@ app.use(express.urlencoded({ limit: '25mb', extended: true }));
 app.use(cors({
   origin: "http://localhost:5173",
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"], 
-  allowedHeaders: ["Content-Type", "Authorization"], 
+    
 }));
 app.use(cookieParser());
 
@@ -30,6 +29,10 @@ app.get('/api/test', (req, res) => {
   console.log("Cookies:", req.cookies); // 
   res.status(200).send({ message: "Test endpoint working fine." });
 });
+
+
+// image upload 
+const uploadImage = require("./src/utils/uploadImage")
 
 // All routes
 const authRoutes = require('./src/users/user.route');
@@ -64,5 +67,13 @@ async function main() {
     process.exit(1);
   }
 }
+
+
+
+app.post("/uploadImage", (req, res) => {
+  uploadImage(req.body.image)
+    .then((url) => res.send(url))
+    .catch((err) => res.status(500).send(err));
+});
 
 main().catch(err => console.error("Unhandled error in main:", err));
