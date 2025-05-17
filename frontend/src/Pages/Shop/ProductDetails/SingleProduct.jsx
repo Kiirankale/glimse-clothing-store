@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { RatingStars } from "../../../components/RatingStars";
 
 import { useDispatch } from "react-redux"
-import { useFetchProductsByIdQuery } from '../../../redux/Features/products/productsApi';
+import { useFetchProductByIdQuery } from '../../../redux/Features/products/productsApi';
 import { addToCart } from '../../../redux/Features/cart/cartSlice';
 
 import ReviewsCard from '../reviews/ReviewsCard';
@@ -17,7 +17,7 @@ export const SingleProduct = () => {
     const { id } = useParams();
 
     const dispatch = useDispatch();
-    const { data, error, isLoading } = useFetchProductsByIdQuery(id);
+    const { data, error, isLoading } = useFetchProductByIdQuery(id);
     console.log(data)
 
 
@@ -61,7 +61,7 @@ export const SingleProduct = () => {
                     <div className='md:w-1/2 w-full'>
                         <h3 className='text-2xl font-semibold mb-4'>{singleProduct?.name}</h3>
                         <p className='text-xl text-primary mb-4 space-x-1'>
-                            ${singleProduct?.price}
+                        ₹ {singleProduct?.price}
                             {singleProduct?.oldPrice && <s className='ml-1'>${singleProduct?.oldPrice}</s>}
                         </p>
                         <p className='text-gray-400 mb-4'>{singleProduct?.description}</p>

@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { getBaseUrl } from '../../../utils/baseUtils'
+import { getBaseUrl } from '../../../utils/baseUtils';
+
 
 
 
@@ -40,7 +41,7 @@ const authApi = createApi(
                     method: "GET"
                 }),
                 refetchOnMount: true,
-                invalidatesTags: ["users"],
+                invalidatesTags: ["User"],
 
             }),
             deleteUser: builder.mutation({
@@ -63,12 +64,11 @@ const authApi = createApi(
 
             ),
             editProfile: builder.mutation({
-                query: ({ profileData }) => ({
-                    url: '/edit-profile',
+                query: (profileData) => ({
+                    url: `/edit-profile`,
                     method: "PATCH",
                     body: profileData
-                }),
-
+                  }),
             })
 
         })

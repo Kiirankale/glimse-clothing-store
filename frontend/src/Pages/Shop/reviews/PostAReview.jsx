@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useFetchProductsByIdQuery } from '../../../redux/Features/products/productsApi';
+
 import { usePostReviewMutation } from '../../../redux/Features/reviews/reviewsApi';
+import { useFetchProductByIdQuery } from '../../../redux/Features/products/productsApi';
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -11,7 +12,7 @@ const PostAReview = ({ isModalOpen, handleClose }) => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     
-    const { refetch } = useFetchProductsByIdQuery(id, { skip: !id });
+    const { refetch } = useFetchProductByIdQuery(id, { skip: !id });
     const [postReview] = usePostReviewMutation();
 
     const handleRating = (value) => {

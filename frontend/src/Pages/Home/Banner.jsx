@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import bannerImg from '../../assets/image header.png';
+import bannerImg from '../../assets/header.png';
 
 
 function Banner() {
@@ -15,7 +15,7 @@ function Banner() {
       </div>
       <div className="header__image">
         <img
-           className='aspect-[7/9]'
+          
           src={bannerImg}
           alt="banner image"
         />
