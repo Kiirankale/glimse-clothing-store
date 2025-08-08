@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGetOrderByIdQuery } from '../../../redux/Features/orders/ordersApi';
 import { useParams } from 'react-router-dom';
-import TimelineStep from '../../../Components/TimelineStep';
+import TimelineStep from '../../../components/TimelineStep';
 
 const OrderDetails = () => {
   const { orderId } = useParams();

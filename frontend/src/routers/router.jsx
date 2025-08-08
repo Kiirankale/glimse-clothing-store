@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Navbar from "../Components/Navbar";
+import Navbar from "../components/Navbar";
 import Home from "../Pages/Home/Home";
 import { CategoryPage } from "../Pages/Category/CategoryPage";
 import { Search } from "../Pages/search/Search";
 import { ShopPage } from "../Pages/Shop/ShopPage";
 import { SingleProduct } from "../Pages/Shop/ProductDetails/SingleProduct";
-import { Login } from "../Components/Login";
-import { Register } from "../Components/Register";
-import PaymentSuccess from "../Components/PaymentSuccess";
+import { Login } from "../components/Login";
+import { Register } from "../components/Register";
+import PaymentSuccess from "../components/PaymentSuccess";
 import DashboardLayout from "../Pages/dashboard/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import UserDMain from "../Pages/dashboard/user/dashboard/UserDMain";

@@ -1,6 +1,6 @@
 
 import { Link, useParams } from 'react-router-dom'
-import { RatingStars } from "../../../components/RatingStars";
+import { RatingStars } from "../../../components/RatingStars"
 
 import { useDispatch } from "react-redux"
 import { useFetchProductByIdQuery } from '../../../redux/Features/products/productsApi';
