@@ -32,7 +32,7 @@ export const OrderSummary = () => {
         })
        
         const session = await response.json()
-        console.log("session",session);
+        
         const result = stripe.redirectToCheckout({
             sessionId:session.id
         })

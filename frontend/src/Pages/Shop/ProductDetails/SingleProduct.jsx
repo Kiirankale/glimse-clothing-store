@@ -15,10 +15,11 @@ import ReviewsCard from '../reviews/ReviewsCard';
 export const SingleProduct = () => {
 
     const { id } = useParams();
+    console.log(id)
 
     const dispatch = useDispatch();
     const { data, error, isLoading } = useFetchProductByIdQuery(id);
-    console.log(data)
+   
 
 
 

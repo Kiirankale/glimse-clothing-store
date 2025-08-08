@@ -20,7 +20,7 @@ export const Login = () => {
         const data ={email,password}
        try {
         const response = await loginUser(data).unwrap();
-        console.log('Login API Response:', response);
+        
         const {token,user}= response;
         dispatch(setUser({user}))
         alert("Login succesful");

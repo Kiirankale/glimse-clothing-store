@@ -9,13 +9,13 @@ const ManageUser = () => {
     const [selectedUser, setSelectedUser] = useState(null)
     const { data: users = [], error, isLoading, refetch } = useGetUserQuery();
 
-    console.log(users)
+   
 
     const [deleteUser] = useDeleteUserMutation()
 
     const handleDelete = async (id) => {
         try {
-            const response = await deleteUser(id).unwrap();
+             await deleteUser(id).unwrap();
             alert("User deleted successfully!")
             refetch();
 

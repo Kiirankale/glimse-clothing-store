@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/Features/cart/cartSlice';
 import { RatingStars } from '../../components/RatingStars';
+import { useFetchAllProductsQuery } from '../../redux/Features/products/productsApi';
 
-export const ProductCards = ({ products }) => {
+export const ProductCards = ({products}) => {
     const dispatch = useDispatch();
+
+
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));

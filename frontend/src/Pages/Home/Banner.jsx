@@ -14,7 +14,7 @@ function Banner() {
         >Explore now</Link></button>
       </div>
       <div className="header__image">
-        <img
+        <img className='aspect-ratio: 7 / 9'
           
           src={bannerImg}
           alt="banner image"

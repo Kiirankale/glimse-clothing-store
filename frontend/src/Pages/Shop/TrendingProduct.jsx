@@ -8,7 +8,7 @@ export const TrendingProduct = () => {
 
     const { data, error, isLoading } = useFetchAllProductsQuery({
         page: 1,
-        limit: 1000, // fetch a large number, we'll slice manually
+        limit: 1000, 
     });
 
     if (isLoading) return <div>Loading...</div>;

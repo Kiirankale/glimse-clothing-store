@@ -2,7 +2,7 @@ import React from 'react'
 import { Pie, Line } from 'react-chartjs-2';
 import 'chart.js/auto'
 const AdminStatsChart = ({ stats }) => {
-    console.log(stats)
+    
     const pieData = {
         labels: ['Total Orders', 'Total Products', 'Total Reviews', 'Total Users'],
         datasets: [

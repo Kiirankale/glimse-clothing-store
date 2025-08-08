@@ -1,6 +1,6 @@
 
 
 export const getBaseUrl =()=>{
-    return "http://localhost:5000"
+    return "https://glimse-backend.vercel.app"
 }
 
