@@ -11,7 +11,7 @@ import reviewApi from './Features/reviews/reviewsApi'
 import orderApi from './Features/orders/ordersApi'
 import productsApi from './Features/products/productsApi'
 // import statsApi from './features/stats/statsApi'
-import statsApi from './Features/stats/statsApi'
+import statsApi from './Features/stats/statsApi';
 
 
 
